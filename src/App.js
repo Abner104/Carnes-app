@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Inicio from './components/Inicio';
+import Info from './components/Info';
+import Product from './components/Product';
+import Contacto from './components/Contacto';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ProductDetail from './components/ProductDetail';
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <Routes>
+        <Route path='/' element={<Header/>}>
+          <Route index element={<Inicio/>} />
+          <Route path='info' element={<Info/>} />
+          <Route path='product' element={<Product/>} />
+          <Route to="id:" element={<ProductDetail/>} />
+          <Route path='contacto' element={<Contacto/>} />
+          <Route path='*' element={ <Navigate replace to="/" />  } />
+
+        </Route>
+      </Routes>
+
+   
+
+    </div >
+
+
+
+
   );
 }
-
 export default App;
+
